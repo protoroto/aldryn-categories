@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.3.0 (2020-05-03)
+==================
+
+* Added support for Django 2.2 and 3.0
+* Added support for django CMS 3.7
+
+
 1.2.0 (2018-12-17)
 ==================
 
