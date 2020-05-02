@@ -1,8 +1,8 @@
 django-treebeard>=4.0.1
 aldryn-translation-tools
-coverage==3.7.1
+coverage
 django-parler
-djangocms-helper
+django-app-helper
 flake8
 python-coveralls==2.4.2
 six

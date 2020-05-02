@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
-import six
 
 from django.test import TestCase, TransactionTestCase
-from django.utils import translation
+from django.utils import encoding, translation
 
 from parler.utils.context import switch_language
 
@@ -40,10 +39,14 @@ class TestCategories(CategoryTestCaseMixin, TransactionTestCase):
 
     def test_str_malicious(self):
         malicious = "<script>alert('hi');</script>"
-        escaped = "&lt;script&gt;alert(&#39;hi&#39;);&lt;/script&gt;"
+        escaped_1 = "&lt;script&gt;alert(&#x27;hi&#x27;);&lt;/script&gt;"
+        escaped_2 = "&lt;script&gt;alert(&#39;hi&#39;);&lt;/script&gt;"
         root = Category.add_root(name=malicious)
         root.save()
-        self.assertEqual(six.u(str(root)), escaped)
+        try:
+            self.assertEqual(encoding.force_text(root), escaped_1)
+        except AssertionError:
+            self.assertEqual(encoding.force_text(root), escaped_2)
 
     def test_delete(self):
         root = Category.add_root(name="test")

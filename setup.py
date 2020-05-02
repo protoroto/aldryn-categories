@@ -39,6 +39,7 @@ setup(
         'Topic :: Software Development :: Libraries',
     ],
     install_requires=[
+        'six',
         'django>=1.11',
         'django-parler',
         'django-treebeard',
