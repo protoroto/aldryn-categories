@@ -44,9 +44,9 @@ class TestCategories(CategoryTestCaseMixin, TransactionTestCase):
         root = Category.add_root(name=malicious)
         root.save()
         try:
-            self.assertEqual(encoding.force_text(root), escaped_1)
+            self.assertEqual(encoding.force_str(root), escaped_1)
         except AssertionError:
-            self.assertEqual(encoding.force_text(root), escaped_2)
+            self.assertEqual(encoding.force_str(root), escaped_2)
 
     def test_delete(self):
         root = Category.add_root(name="test")

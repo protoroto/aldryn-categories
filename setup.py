@@ -43,7 +43,7 @@ setup(
         'django>=1.11',
         'django-parler',
         'django-treebeard',
-        'aldryn-translation-tools',
+        'aldryn-translation-tools>=0.4.0',
     ],
     include_package_data=True,
     zip_safe=False
